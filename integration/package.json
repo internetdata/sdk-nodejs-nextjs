@@ -1,0 +1,21 @@
+{
+    "name": "internetdata-next-integration",
+    "version": "0.0.0",
+    "private": true,
+    "description": "Exercises the PUBLISHED internetdata-next package against the live API.",
+    "type": "module",
+    "license": "MIT",
+    "engines": {
+        "node": ">=22"
+    },
+    "dependencies": {
+        "internetdata-next": "^1.0.0",
+        "next": "16.4.1",
+        "react": "19.2.0",
+        "react-dom": "19.2.0"
+    },
+    "scripts": {
+        "test": "node --test test/*.test.mjs",
+        "integration": "node scripts/run.mjs"
+    }
+}
