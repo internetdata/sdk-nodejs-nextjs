@@ -2,6 +2,12 @@
 
 What each release changed for you, newest first. Each line is a commit's summary, linked to its full description and diff.
 
+## 1.0.1 - 2026-11-14
+
+### Fixes
+
+- Require @internetdata/internetdata 2.10.1: a 403 can mean the key lacks the ip.lookup scope ([`df4904b`](https://github.com/internetdata/sdk-nodejs-nextjs/commit/df4904b4155affb5d2fd474bb0488df1987679a1))
+
 ## 1.0.0 - 2026-11-14
 
 ### Features
