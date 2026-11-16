@@ -2,6 +2,12 @@
 
 What each release changed for you, newest first. Each line is a commit's summary, linked to its full description and diff.
 
+## 1.0.3 - 2026-11-16
+
+### Features
+
+- Require internetdata 2.12.0: an AS's rank, neighbors and hosted domains ([`b8d5ffa`](https://github.com/internetdata/sdk-nodejs-nextjs/commit/b8d5ffa5835cd3a4dd361c7fbcfbfd8a2d6d147e))
+
 ## 1.0.2 - 2026-11-15
 
 ### Features
