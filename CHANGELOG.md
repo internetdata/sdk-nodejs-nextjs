@@ -2,6 +2,12 @@
 
 What each release changed for you, newest first. Each line is a commit's summary, linked to its full description and diff.
 
+## 1.0.4 - 2026-11-17
+
+### Features
+
+- Require internetdata 2.13.0: cap_reached on a paid answer past its overage cap ([`0823a3a`](https://github.com/internetdata/sdk-nodejs-nextjs/commit/0823a3ae71485c2b1d5f48670c2afe6285717e99))
+
 ## 1.0.3 - 2026-11-16
 
 ### Features
