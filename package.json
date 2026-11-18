@@ -46,7 +46,7 @@
         "node": ">=22"
     },
     "dependencies": {
-        "@internetdata/internetdata": "^2.13.0"
+        "@internetdata/internetdata": "^2.14.0"
     },
     "peerDependencies": {
         "next": ">=15"
