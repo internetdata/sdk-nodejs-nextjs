@@ -2,6 +2,12 @@
 
 What each release changed for you, newest first. Each line is a commit's summary, linked to its full description and diff.
 
+## 1.0.6 - 2026-11-19
+
+### Fixes
+
+- Require internetdata 2.14.1: a reduced answer is cached a minute at most ([`2e8d3ef`](https://github.com/internetdata/sdk-nodejs-nextjs/commit/2e8d3ef1664b6e7f3230041f8e6b81e75f08f419))
+
 ## 1.0.5 - 2026-11-18
 
 ### Fixes
