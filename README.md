@@ -15,7 +15,7 @@ npm install internetdata-next
 
 Requires Node.js 22 or newer and Next.js 15 or newer. The proxy runs on the Node.js runtime and, on Next 15, on the Edge runtime too.
 
-Without an API key a lookup is on Unlimited, the free plan: the country, the network and the company behind the address, Tor, relay, anycast, carrier and satellite space and the service flags, with no daily or monthly cap. Every lookup your app makes comes from your server's address, though, so a busy site will see bursts refused. A paid plan answers every field, VPN, the proxy flags, hosting, CDN and the city among them; create a key in the [console](https://app.internetdata.io). A free account tries every field, 100 lookups a day.
+Without an API key a lookup is on Unlimited, the free plan: the country, the network and the company behind the address, Tor, relay, anycast, carrier and satellite space and the service flags, with no daily or monthly cap. Every lookup your app makes comes from your server's address, though, so a busy site will see bursts refused. A paid plan answers every field, VPN, the proxy flags, hosting, CDN and the city among them; create a key in the [console](https://app.internetdata.io). A free account tries every field.
 
 Next 16 renamed the file convention from `middleware.ts` to `proxy.ts`, and the export from `middleware` to `proxy`. Both work on 16, where `middleware.ts` logs a deprecation, so use whichever your version supports.
 
