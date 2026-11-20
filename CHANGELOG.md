@@ -2,6 +2,12 @@
 
 What each release changed for you, newest first. Each line is a commit's summary, linked to its full description and diff.
 
+## 1.0.7 - 2026-11-20
+
+### Fixes
+
+- Require internetdata 2.14.2: the spec re-pinned to 2026.11.20 ([`5d8e441`](https://github.com/internetdata/sdk-nodejs-nextjs/commit/5d8e4418510c981f5ab91bad973f2cef178347a7))
+
 ## 1.0.6 - 2026-11-19
 
 ### Fixes
