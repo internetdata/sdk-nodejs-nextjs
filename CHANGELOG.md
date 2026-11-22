@@ -2,6 +2,13 @@
 
 What each release changed for you, newest first. Each line is a commit's summary, linked to its full description and diff.
 
+## 1.0.9 - 2026-11-22
+
+### Features
+
+- Require internetdata 2.16.0: block on isBot, and read a paid answer's bot ([`9dd3624`](https://github.com/internetdata/sdk-nodejs-nextjs/commit/9dd3624f1a71e7073713761b088f8c696dae0900))
+- README: block crawlers, monitors and scanners with isBot, on every plan ([`78f4fc9`](https://github.com/internetdata/sdk-nodejs-nextjs/commit/78f4fc901b714cf6d563107505b466da899ef475))
+
 ## 1.0.8 - 2026-11-20
 
 ### Fixes
