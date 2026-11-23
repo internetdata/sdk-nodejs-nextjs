@@ -2,6 +2,12 @@
 
 What each release changed for you, newest first. Each line is a commit's summary, linked to its full description and diff.
 
+## 1.0.10 - 2026-11-23
+
+### Fixes
+
+- Require internetdata 2.16.1 ([`54bf8d0`](https://github.com/internetdata/sdk-nodejs-nextjs/commit/54bf8d0fb22c5c1b2c7d529085802309920a6298))
+
 ## 1.0.9 - 2026-11-22
 
 ### Features
