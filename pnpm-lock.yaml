@@ -167,8 +167,8 @@ importers:
   .:
     dependencies:
       '@internetdata/internetdata':
-        specifier: ^2.16.1
-        version: 2.16.1
+        specifier: ^2.17.0
+        version: 2.17.0
     devDependencies:
       '@mslmio/eslint-config':
         specifier: ^1.1.0
@@ -412,8 +412,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@internetdata/internetdata@2.16.1':
-    resolution: {integrity: sha512-MKYjzfA0URQCInD8WY8cjiYpAJ9E5Kh0rTZl98XQ0doTNHnRekhbKlxfzNxYJ57TUS46nKp3df/p9qYjooVKEg==}
+  '@internetdata/internetdata@2.17.0':
+    resolution: {integrity: sha512-PMfzIxFoJ5z8GJ/GXdum0Zln7h8O1W74NI8v2np3Q1yA+KdsaIUzfUYYITG+LDWMOEwCEqertfHS5Pz0Uet5AA==}
     engines: {node: '>=22'}
 
   '@keyv/bigmap@1.3.1':
@@ -1115,7 +1115,7 @@ snapshots:
   '@img/sharp-win32-x64@0.35.5':
     optional: true
 
-  '@internetdata/internetdata@2.16.1':
+  '@internetdata/internetdata@2.17.0':
     dependencies:
       lru-cache: 11.5.3
       p-limit: 6.2.0

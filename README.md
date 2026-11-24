@@ -92,7 +92,7 @@ blockCondition: { isVpn: true, vpn: { provider: 'nordvpn' } }         // one pro
 blockCondition: { resproxy: { hits: { gte: 5 } } }                    // a numeric threshold
 ```
 
-Values are matched by equality, strings without regard to case. An array means any-of. `{ gte, gt, lte, lt }` compares numbers, and every bound you give must hold, so two of them are a range. Members you set to `false` or `null` are ignored, so a condition states the signals you act on; one that constrains nothing would match every request, and is refused when the proxy is created rather than silently blocking all your traffic.
+Values are matched by equality, strings without regard to case. An array means any-of. `{ gte, gt, lte, lt }` compares numbers, and every bound you give must hold, so two of them are a range. A member the answer holds as a list matches when any one element does, every member of an object term on the same element: `{ web: { port: 443 } }`, `{ pubproxy: { protocols: 'socks5' } }`. Members you set to `false` or `null` are ignored, so a condition states the signals you act on; one that constrains nothing would match every request, and is refused when the proxy is created rather than silently blocking all your traffic.
 
 Replace the refusal with `onBlocked`. A redirect is usually friendlier than a 403:
 
