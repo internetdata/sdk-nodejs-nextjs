@@ -2,6 +2,13 @@
 
 What each release changed for you, newest first. Each line is a commit's summary, linked to its full description and diff.
 
+## 1.1.0 - 2026-11-25
+
+### Features
+
+- Let a verified crawler through with allowBots ([`8787633`](https://github.com/internetdata/sdk-nodejs-nextjs/commit/8787633f7bc6f13c85aa4e313eb20f8060d21cf7))
+- Require @internetdata/internetdata 2.18.0: a user agent sent with a lookup, and allowBots in the middleware core ([`9fddb58`](https://github.com/internetdata/sdk-nodejs-nextjs/commit/9fddb587c4f4c2efba92e530b9b6524ee632a39b))
+
 ## 1.0.11 - 2026-11-24
 
 ### Features
