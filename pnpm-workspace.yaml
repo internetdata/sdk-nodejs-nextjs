@@ -7,3 +7,4 @@ minimumReleaseAgeExclude:
   # it out would ship this middleware a week behind its own client library
   # after every SDK release.
   - "@internetdata/internetdata"
+  - "@mslmio/*"   # our scope on public npm
