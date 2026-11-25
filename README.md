@@ -100,6 +100,20 @@ Replace the refusal with `onBlocked`. A redirect is usually friendlier than a 40
 onBlocked: (request) => NextResponse.redirect(new URL('/unavailable', request.url)),
 ```
 
+## Let a verified crawler through
+
+`allowBots` sends each request's own `User-Agent` with its lookup, and a request whose answer's `userAgent.verdict` is `verified`, a crawler its operator vouches for such as Googlebot from Google's addresses, is never blocked, whatever `blockCondition` matches. The answer is still forwarded, its `user_agent` included:
+
+```ts
+export const proxy = createProxy({
+    apiKey: process.env.INTERNETDATA_API_KEY,
+    blockCondition: { isBot: true },
+    allowBots: true,
+});
+```
+
+A client claiming to be a crawler from an address its operator does not vouch for reads `spoofed`, so `blockCondition: { userAgent: { verdict: 'spoofed' } }` refuses a forged crawler. A request with no `User-Agent` sends none. It is off by default, and then no agent is sent and the cache keeps one answer per address rather than one per address and agent. A verdict needs a paid plan or the trial: a served answer without one is reported once under `onMissingField`.
+
 ## Doing other work in the same proxy
 
 Most apps already have a proxy. Use `createGuard` and call it from yours:
@@ -174,7 +188,7 @@ Beyond a few million distinct visitors a day, stop calling the API per request: 
 
 ## Absent is not false
 
-Unlimited, with a key or without one, leaves out `isVpn`, `isHosting`, `isCdn` and the four proxy flags, the detail behind them, and the paid members inside `location`, `asn`, `company` and `abuse`, such as `location.city`. A field your plan does not include is absent, which means "not in your plan" rather than "checked, and no". The forwarded answer keeps its wire names:
+Unlimited, with a key or without one, leaves out `isVpn`, `isHosting`, `isCdn` and the four proxy flags, the detail behind them, `user_agent`, and the paid members inside `location`, `asn`, `company` and `abuse`, such as `location.city`. A field your plan does not include is absent, which means "not in your plan" rather than "checked, and no". The forwarded answer keeps its wire names:
 
 ```ts
 lookup.result?.is_vpn ?? false   // when you only want the flag

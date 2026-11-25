@@ -78,7 +78,7 @@ export function createProxy(options: Options = {}) {
  * ```
  */
 export function createGuard(options: Options = {}) {
-    const core = createCore<NextRequest>(options, defaultIpSelector);
+    const core = createCore<NextRequest>(options, defaultIpSelector, selectors.userAgentSelector);
     const forwarding = options.forward !== false;
 
     const guard = async (request: NextRequest): Promise<Lookup | undefined> =>
