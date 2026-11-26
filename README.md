@@ -15,7 +15,7 @@ npm install internetdata-next
 
 Requires Node.js 22 or newer and Next.js 15 or newer. The proxy runs on the Node.js runtime and, on Next 15, on the Edge runtime too.
 
-Without an API key a lookup is on Unlimited, the free plan: the country, the network and the company behind the address, Tor, relay, bot, anycast, carrier and satellite space and the service flags, with no daily or monthly cap. Every lookup your app makes comes from your server's address, though, so a busy site will see bursts refused. A paid plan answers every field, VPN, the proxy flags, hosting, CDN and the city among them; create a key in the [console](https://app.internetdata.io). A free account tries every field.
+Without an API key a lookup is on Unlimited, the free plan: the country, the network and the company behind the address, Tor, relay and anycast, with no daily or monthly cap. Every lookup your app makes comes from your server's address, though, so a busy site will see bursts refused. A paid plan answers every field, VPN, the proxy flags, hosting, CDN, bots, carriers, satellites, the service flags and the city among them; create a key in the [console](https://app.internetdata.io). A free account tries every field.
 
 Next 16 renamed the file convention from `middleware.ts` to `proxy.ts`, and the export from `middleware` to `proxy`. Both work on 16, where `middleware.ts` logs a deprecation, so use whichever your version supports.
 
@@ -80,7 +80,7 @@ export const proxy = createProxy({
 });
 ```
 
-A condition is written in the shape of a result, and only the members you name are considered, so it can refuse on anything in the answer. The country works on every plan, and so do the first three of these:
+A condition is written in the shape of a result, and only the members you name are considered, so it can refuse on anything in the answer. The country works on every plan, and so do `isTor`, `isRelay` and `isAnycast`; the others here need a paid plan or the trial:
 
 ```ts
 blockCondition: { asn: { type: 'hosting' } }                          // the network's type
@@ -188,7 +188,7 @@ Beyond a few million distinct visitors a day, stop calling the API per request: 
 
 ## Absent is not false
 
-Unlimited, with a key or without one, leaves out `isVpn`, `isHosting`, `isCdn` and the four proxy flags, the detail behind them, `user_agent`, and the paid members inside `location`, `asn`, `company` and `abuse`, such as `location.city`. A field your plan does not include is absent, which means "not in your plan" rather than "checked, and no". The forwarded answer keeps its wire names:
+Unlimited, with a key or without one, leaves out `isVpn`, `isHosting`, `isCdn`, the four proxy flags, `isBot`, `isCarrier`, `isSatellite` and the five service flags, the detail behind them, `user_agent`, and the paid members inside `location`, `asn`, `company` and `abuse`, such as `location.city`. A field your plan does not include is absent, which means "not in your plan" rather than "checked, and no". The forwarded answer keeps its wire names:
 
 ```ts
 lookup.result?.is_vpn ?? false   // when you only want the flag
