@@ -1,6 +1,6 @@
 {
     "name": "internetdata-next",
-    "version": "1.1.1",
+    "version": "1.1.2",
     "description": "Official Next.js proxy/middleware for the InternetData API. Look up the visitor behind every request: location, network, VPN, proxy, Tor and hosting.",
     "type": "module",
     "packageManager": "pnpm@12.12.1",

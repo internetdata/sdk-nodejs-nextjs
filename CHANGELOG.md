@@ -2,6 +2,12 @@
 
 What each release changed for you, newest first. Each line is a commit's summary, linked to its full description and diff.
 
+## 1.1.2 - 2026-11-28
+
+### Features
+
+- Require @internetdata/internetdata 2.20.0: allowBots sends only a crawler's User-Agent, at most four an address ([`e078d84`](https://github.com/internetdata/sdk-nodejs-nextjs/commit/e078d84670cf139de1b87c9112e2c31606f67f1e))
+
 ## 1.1.1 - 2026-11-26
 
 ### Features
