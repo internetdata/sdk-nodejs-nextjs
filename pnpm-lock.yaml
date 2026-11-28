@@ -167,8 +167,8 @@ importers:
   .:
     dependencies:
       '@internetdata/internetdata':
-        specifier: ^2.19.0
-        version: 2.19.0
+        specifier: ^2.20.0
+        version: 2.20.0
     devDependencies:
       '@mslmio/eslint-config':
         specifier: ^2.6.2
@@ -412,8 +412,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@internetdata/internetdata@2.19.0':
-    resolution: {integrity: sha512-9vc4IY4Zfczg7XPgkqMxcQvIURdJ3p5+kwZ679Ln3VzuIq1m6ISO7/KETwgveEXxflrxzZKbElaKURZUEV26FA==}
+  '@internetdata/internetdata@2.20.0':
+    resolution: {integrity: sha512-tzQEcbzpMZ1x2Xmvrc0kr5ut7wlB78nDrY7J7u31G8H01LKgyQ94NC81tT2ZRfLBM5Og9t9o8WSfDWABGOwKoQ==}
     engines: {node: '>=22'}
 
   '@isaacs/nonrecursive-glob-match@1.1.0':
@@ -1122,7 +1122,7 @@ snapshots:
   '@img/sharp-win32-x64@0.35.5':
     optional: true
 
-  '@internetdata/internetdata@2.19.0':
+  '@internetdata/internetdata@2.20.0':
     dependencies:
       lru-cache: 11.5.3
       p-limit: 6.2.0

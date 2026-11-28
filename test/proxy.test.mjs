@@ -367,3 +367,47 @@ test('allowBots sends the visitor\'s User-Agent and lets only a verified crawler
         globalThis.fetch = realFetch;
     }
 });
+
+// The bound, through a real request cycle from public peers: with a stub answering `verified` to
+// any agent, four crawler agents an address reach the API, the fifth arrives bare and is refused,
+// a known one is sent again, a browser's is never sent, and another address has its own four.
+test('allowBots sends only a crawler\'s User-Agent, at most four an address', async () => {
+    const realFetch = globalThis.fetch;
+    const crawler = (n) => `Mozilla/5.0 (compatible; Examplebot/${n}.0)`;
+    const chrome = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36';
+    const OTHER_IP = '66.249.66.2';
+    const sent = [];
+    globalThis.fetch = async (input, init) => {
+        const url = new URL(new Request(input, init).url);
+        if (url.hostname !== 'api.internetdata.io') {
+            return realFetch(input, init);
+        }
+        const agent = url.searchParams.get('user_agent');
+        const ip = decodeURIComponent(url.pathname.slice(1));
+        sent.push({ ip: ip, agent: agent });
+        return new Response(JSON.stringify({
+            ...PAID, ip: ip, is_bot: true, bot: {},
+            ...(agent === null ? {} : { user_agent: { agent: 'Examplebot', kind: 'bot', verdict: 'verified' } }),
+        }), { status: 200, headers: { 'content-type': 'application/json' } });
+    };
+    const proxy = createProxy({ apiKey: 'readme-key', cache: false, onWarn: () => {}, blockCondition: { isBot: true }, allowBots: true });
+    const get = async (ip, agent) => (await proxy(request({ 'x-forwarded-for': ip, 'user-agent': agent }))).status;
+    try {
+        for (const n of [1, 2, 3, 4]) {
+            assert.equal(await get(PUBLIC_IP, crawler(n)), 200, `agent ${n}`);
+        }
+        assert.equal(await get(PUBLIC_IP, crawler(5)), 403, 'the fifth arrives bare and is refused');
+        assert.equal(await get(PUBLIC_IP, crawler(1)), 200, 'a known agent is still sent');
+        assert.equal(await get(PUBLIC_IP, chrome), 403, 'a browser\'s agent is never sent');
+        assert.equal(await get(OTHER_IP, crawler(5)), 200, 'each address has its own four');
+        assert.deepEqual(sent, [
+            ...[1, 2, 3, 4].map((n) => ({ ip: PUBLIC_IP, agent: crawler(n) })),
+            { ip: PUBLIC_IP, agent: null },
+            { ip: PUBLIC_IP, agent: crawler(1) },
+            { ip: PUBLIC_IP, agent: null },
+            { ip: OTHER_IP, agent: crawler(5) },
+        ]);
+    } finally {
+        globalThis.fetch = realFetch;
+    }
+});
